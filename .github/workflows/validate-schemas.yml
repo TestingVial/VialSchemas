@@ -1,0 +1,28 @@
+name: Validate JSON Schemas
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Run schema validation tests
+        run: dotnet test tests/VialSchemas.Tests --logger "trx;LogFileName=test-results.trx" --results-directory ./test-results
+
+      - name: Publish test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results/*.trx
