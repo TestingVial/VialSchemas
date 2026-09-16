@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "0.0.1",
+  "vials": [
+    {
+      "name": "Cart",
+      "description": "User can add a product to the cart",
+      "type": "integration",
+      "technology": "csharp",
+      "location": {
+        "filePath": "tests/CartTests.cs",
+        "className": "CartTests",
+        "methodName": "UserCanAddAProduct"
+      }
+    },
+    {
+      "name": "Cart",
+      "description": "Cart rejects an unavailable product",
+      "type": "unit",
+      "technology": "csharp",
+      "location": {
+        "filePath": "tests/CartTests.cs",
+        "className": "CartTests",
+        "methodName": "RejectsUnavailableProduct"
+      }
+    },
+    {
+      "name": "Checkout",
+      "description": "User completes checkout",
+      "type": "e2e",
+      "technology": "playwright",
+      "location": {
+        "url": "https://example.test/checkout"
+      }
+    }
+  ]
+}
