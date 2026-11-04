@@ -17,6 +17,8 @@ This approach is intended as a business-focused alternative to the Testing Pyram
 
 ## Repository Contents
 
-- [`schemas/`](schemas/) contains the versioned JSON Schemas.
+- [`schemas/`](schemas/) contains the versioned JSON Schemas. Each schema's `$id` is its raw URL,
+  `https://raw.githubusercontent.com/TestingVial/VialSchemas/main/schemas/v<version>.json`.
+- [`versions.json`](versions.json) lists the published versions and their URLs.
 - [`examples/`](examples/) contains examples of `.vial` files.
 - [`tests/`](tests/) contains tests that validate the schemas against the examples.
