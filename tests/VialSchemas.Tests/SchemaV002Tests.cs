@@ -47,6 +47,12 @@ public class SchemaV002Tests
     }
 
     [Fact]
+    public void Technology_IsOptional()
+    {
+        Assert.True(Evaluate(v => v.Remove("technology")).IsValid);
+    }
+
+    [Fact]
     public void Type_RejectsAnEmptyString()
     {
         Assert.False(Evaluate(v => v["type"] = "").IsValid);
