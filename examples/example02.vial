@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.0.2",
+  "vials": [
+    {
+      "name": "Cart",
+      "description": "User can add a product to the cart",
+      "type": "integration",
+      "technology": "csharp",
+      "location": {
+        "className": "Shop.Tests.CartTests",
+        "methodName": "UserCanAddAProduct"
+      }
+    },
+    {
+      "name": "Cart",
+      "description": "Cart persistence",
+      "type": "unit",
+      "technology": "csharp",
+      "location": {
+        "className": "Shop.Tests.CartRepositoryTests",
+        "methodName": "*"
+      }
+    },
+    {
+      "name": "Checkout",
+      "description": "Checkout completes in under a second",
+      "type": "performance",
+      "technology": "csharp",
+      "location": {
+        "className": "Shop.Tests.CheckoutTests",
+        "methodName": "Checkout_IsFast"
+      }
+    },
+    {
+      "name": "Search",
+      "description": "Search matches products by name",
+      "technology": "csharp",
+      "location": {
+        "className": "Shop.Tests.SearchTests",
+        "methodName": "Search_MatchesByName"
+      }
+    },
+    {
+      "name": "Checkout",
+      "description": "User completes checkout",
+      "type": "e2e",
+      "technology": "playwright",
+      "location": {
+        "url": "https://example.test/checkout"
+      }
+    }
+  ]
+}

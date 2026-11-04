@@ -42,12 +42,11 @@ public class ExampleSchemaValidationTests
         Assert.False(string.IsNullOrWhiteSpace(schemaVersion),
             $"{Path.GetFileName(examplePath)} is missing a \"schemaVersion\" property.");
 
-        var schemaPath = Path.Combine(RepoPaths.SchemasDir, $"v{schemaVersion}.json");
+        var schemaPath = Schemas.PathOf(schemaVersion!);
         Assert.True(File.Exists(schemaPath),
             $"{Path.GetFileName(examplePath)} references schemaVersion \"{schemaVersion}\", but {Path.GetFileName(schemaPath)} was not found in the schemas folder.");
 
-        var schema = JsonSchema.FromText(File.ReadAllText(schemaPath));
-        var results = schema.Evaluate(instance, new EvaluationOptions { OutputFormat = OutputFormat.List });
+        var results = Schemas.Load(schemaVersion!).Evaluate(instance, new EvaluationOptions { OutputFormat = OutputFormat.List });
 
         Assert.True(results.IsValid,
             $"{Path.GetFileName(examplePath)} does not conform to {Path.GetFileName(schemaPath)}:\n" +
