@@ -33,7 +33,7 @@ A `.vial` file is a JSON document with a `schemaVersion` (which selects the sche
 | `name` | yes | The vial (business entity or feature) the test covers, e.g. `Cart`. |
 | `description` | yes | What the test verifies. Non-empty. |
 | `type` | no | The test category, as free text: `unit`, `integration` and `e2e` are the common values, and custom categories such as `performance` are allowed. Write it in lowercase. Omit it for vials that have no category. |
-| `technology` | yes | The language or tool of the test, e.g. `csharp` or `playwright`. |
+| `technology` | no | The language or tool of the test, e.g. `csharp` or `playwright`. |
 | `location` | yes | Either a source location (`className`, the fully qualified class name, and `methodName`, the method or `*` for the whole class) or a URL location (`url`). |
 
 ### Version history
