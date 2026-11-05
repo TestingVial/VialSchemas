@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/TestingVial/JsonSchemas/main/schemas/v0.0.1.json",
+  "$id": "https://raw.githubusercontent.com/TestingVial/VialSchemas/main/schemas/v0.0.1.json",
   "title": "Vial Schema v0.0.1",
   "type": "object",
   "additionalProperties": false,

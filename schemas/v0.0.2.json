@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/TestingVial/VialSchemas/main/schemas/v0.0.2.json",
+  "title": "Vial Schema v0.0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "vials"],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.0.2"
+    },
+    "vials": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/vial"
+      }
+    }
+  },
+  "$defs": {
+    "vial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "description",
+        "location"
+      ],
+      "properties": {
+        "name": {
+          "description": "The vial (business entity or feature) the test covers, e.g. \"Cart\".",
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "description": "What the test expresses about the business entity.",
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "description": "The test category, as free text. Common values are \"unit\", \"integration\" and \"e2e\"; custom categories such as \"performance\" are allowed. Write it in lowercase. Omitted for vials that have no category.",
+          "type": "string",
+          "minLength": 1
+        },
+        "technology": {
+          "description": "The language or tool the test is written with, e.g. \"csharp\" or \"playwright\".",
+          "type": "string",
+          "minLength": 1
+        },
+        "location": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sourceLocation"
+            },
+            {
+              "$ref": "#/$defs/urlLocation"
+            }
+          ]
+        }
+      }
+    },
+    "sourceLocation": {
+      "description": "A test in source code.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["className", "methodName"],
+      "properties": {
+        "className": {
+          "description": "The fully qualified name of the class that contains the test.",
+          "type": "string",
+          "minLength": 1
+        },
+        "methodName": {
+          "description": "The test method, or \"*\" when the vial applies to the whole class.",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "urlLocation": {
+      "description": "A test that lives outside source code, identified by a URL.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  }
+}
